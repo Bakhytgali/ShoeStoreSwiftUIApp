@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         Text("This is the Home View")
+            .toolbar(.hidden, for: .navigationBar)
     }
 }
 

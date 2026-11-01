@@ -25,16 +25,16 @@ struct WelcomeView: View {
             
             Spacer()
             
-            Button("Continue") {
-                
+            NavigationLink(destination: HomeView()) {
+                Text("Continue")
+                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(Color.white)
+                    .font(.title2)
+                    .bold()
+                    .padding(.vertical, 25)
+                    .background(Color.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
             }
-            .frame(maxWidth: .infinity)
-            .foregroundStyle(Color.white)
-            .font(.title2)
-            .bold()
-            .padding(.vertical, 25)
-            .background(Color.black)
-            .clipShape(RoundedRectangle(cornerRadius: 15))
             
             
             Spacer()

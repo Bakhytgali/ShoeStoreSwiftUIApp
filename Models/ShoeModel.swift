@@ -6,20 +6,21 @@
 //
 
 import Foundation
-import SwiftUI
 
 struct ShoeModel {
-    let shoeName: String
-    let shoePrice: String
-    let shoeDescription: String
-    let shoeCategory: String
-    let shoeImage: Image
+    let name: String
+    let price: Int
+    let description: String
+    let category: Category
+    let imageName: String
     
-    init(shoeName: String, shoePrice: String, shoeDescription: String, shoeCategory: String, shoeImage: Image) {
-        self.shoeName = shoeName
-        self.shoePrice = shoePrice
-        self.shoeDescription = shoeDescription
-        self.shoeCategory = shoeCategory
-        self.shoeImage = shoeImage
-    }
+    static let sampleShoes = [
+        ShoeModel(
+            name: "Air Max Plus Seven",
+            price: 150,
+            description: "Those are real cool looking shoes.",
+            category: .summer,
+            imageName: "air_max_plus_seven"
+        ),
+    ]
 }

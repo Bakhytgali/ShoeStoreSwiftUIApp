@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("isWelcomeScreenSeen") private var isWelcomeScreenSeen = false
+    
     var body: some View {
         NavigationStack {
-            WelcomeView()
+            if !isWelcomeScreenSeen {
+                WelcomeView(isWelcomeScreenSeen: $isWelcomeScreenSeen)
+            } else {
+                HomeView()
+            }
         }
     }
 }

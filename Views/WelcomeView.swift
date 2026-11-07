@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @Binding var isWelcomeScreenSeen: Bool
+    
     var body: some View {
         VStack(spacing: 35) {
             Spacer()
@@ -25,7 +27,9 @@ struct WelcomeView: View {
             
             Spacer()
             
-            NavigationLink(destination: HomeView()) {
+            Button {
+                isWelcomeScreenSeen.toggle()
+            } label: {
                 Text("Continue")
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(Color.white)
@@ -45,5 +49,5 @@ struct WelcomeView: View {
 }
 
 #Preview {
-    WelcomeView()
+    WelcomeView(isWelcomeScreenSeen: .constant(false))
 }

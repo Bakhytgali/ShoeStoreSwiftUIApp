@@ -13,6 +13,7 @@ struct HomeView: View {
             Text("Trending")
                 .font(.title)
                 .bold()
+                .padding(15)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 15) {
@@ -20,12 +21,12 @@ struct HomeView: View {
                         ShoeCardComponent(shoeModel: shoe)
                     }
                 }
+                .padding(.horizontal, 15)
             }
             .fixedSize(horizontal: false, vertical: true)
             
             Spacer()
         }
-        .padding(15)
     }
 }
 

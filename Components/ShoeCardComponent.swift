@@ -11,28 +11,28 @@ struct ShoeCardComponent: View {
     let shoeModel: ShoeModel
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .foregroundStyle(Color.red)
+        VStack {
+            Image(shoeModel.imageName)
+                .resizable()
+                .scaledToFit()
             
-            VStack {
-                Image(shoeModel.imageName)
-                
-                Text(shoeModel.name)
-                    .font(.title2)
+            Text(shoeModel.name)
+                .font(.title2)
+                .bold()
+                .lineLimit(1)
+            
+            HStack {
+                Text("\(shoeModel.price)$")
                     .bold()
                 
-                HStack {
-                    Text("\(shoeModel.price)$")
-                        .bold()
-                    
-                    Text(shoeModel.category.rawValue)
-                        .foregroundStyle(Color.gray)
-                }
+                Text(shoeModel.category.rawValue)
+                    .foregroundStyle(.gray)
             }
-            .padding(20)
         }
-        .frame(width: 450, height: 250)
+        .padding(20)
+        .frame(width: 250, height: 300)
+        .background(.cardBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 

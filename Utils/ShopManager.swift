@@ -9,5 +9,5 @@ import Foundation
 import SwiftUI
 
 class ShopManager {
-    var shoesList: [ShoeModel] = ShoeModel.sampleShoes
+    static var shoesList: [ShoeModel] = ShoeModel.sampleShoes
 }

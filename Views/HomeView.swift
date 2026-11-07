@@ -9,10 +9,23 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("Trending")
+                .font(.title)
+                .bold()
             
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: 15) {
+                    ForEach(ShopManager.shoesList) { shoe in
+                        ShoeCardComponent(shoeModel: shoe)
+                    }
+                }
+            }
+            .fixedSize(horizontal: false, vertical: true)
+            
+            Spacer()
         }
-        .toolbar(.hidden, for: .navigationBar)
+        .padding(15)
     }
 }
 

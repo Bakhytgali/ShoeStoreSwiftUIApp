@@ -18,10 +18,16 @@ struct HomeView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 15) {
                     ForEach(ShopManager.shoesList) { shoe in
-                        ShoeCardComponent(shoeModel: shoe)
+                        NavigationLink(value: shoe) {
+                            ShoeCardComponent(shoeModel: shoe)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding(.horizontal, 15)
+            }
+            .navigationDestination(for: ShoeModel.self) { shoe in
+                ShoeItemView(shoe: shoe)
             }
             .fixedSize(horizontal: false, vertical: true)
             

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var shopManager: ShopManager
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Trending")
@@ -19,7 +21,13 @@ struct HomeView: View {
                 LazyHStack(spacing: 15) {
                     ForEach(ShopManager.shoesList) { shoe in
                         NavigationLink(value: shoe) {
-                            ShoeCardComponent(shoeModel: shoe)
+                            ShoeCardComponent(
+                                shoeModel: shoe,
+                                onCardButtonPress: {
+                                    shopManager.toggleCart(shoe: shoe)
+                                },
+                                isShoeAdded: shopManager.shoeAlreadyInCart(shoe: shoe)
+                            )
                         }
                         .buttonStyle(.plain)
                     }

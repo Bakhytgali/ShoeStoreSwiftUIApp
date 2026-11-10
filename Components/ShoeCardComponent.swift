@@ -9,6 +9,12 @@ import SwiftUI
 
 struct ShoeCardComponent: View {
     let shoeModel: ShoeModel
+    let onCardButtonPress: () -> Void
+    let isShoeAdded: Bool
+    
+    var buttonIconName: String {
+        isShoeAdded ? "cart.badge.minus" : "cart"
+    }
     
     var body: some View {
             VStack {
@@ -35,8 +41,8 @@ struct ShoeCardComponent: View {
                     
                     Spacer()
                     
-                    Button { } label: {
-                        Image(systemName: "cart")
+                    Button(action: onCardButtonPress, label: {
+                        Image(systemName: buttonIconName)
                             .resizable()
                             .scaledToFit()
                             .frame(width: 25)
@@ -44,7 +50,7 @@ struct ShoeCardComponent: View {
                             .foregroundStyle(.white)
                             .background(.black)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
-                    }
+                    })
                 }
             }
             .frame(width: 250, height: 300)
@@ -56,6 +62,10 @@ struct ShoeCardComponent: View {
 
 #Preview {
     ShoeCardComponent(
-        shoeModel: ShoeModel.sampleShoes[0]
+        shoeModel: ShoeModel.sampleShoes[0],
+        onCardButtonPress: {
+            print("pressed")
+        },
+        isShoeAdded: false
     )
 }

@@ -6,8 +6,29 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
 
-class ShopManager {
+enum AddToCartStatus {
+    case success
+    case alreadyInCart
+}
+
+class ShopManager: ObservableObject {
     static var shoesList: [ShoeModel] = ShoeModel.sampleShoes
+    
+    @Published var userCart: [ShoeModel] = []
+    
+    
+    func shoeAlreadyInCart(shoe: ShoeModel) -> Bool {
+        return userCart.contains(shoe)
+    }
+    
+    func toggleCart(shoe: ShoeModel) {
+        if(shoeAlreadyInCart(shoe: shoe)) {
+            userCart.remove(at: userCart.firstIndex(of: shoe)!)
+        } else {
+            userCart.append(shoe)
+        }
+    }
 }

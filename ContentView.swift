@@ -11,13 +11,23 @@ struct ContentView: View {
     @AppStorage("isWelcomeScreenSeen") private var isWelcomeScreenSeen = false
     
     var body: some View {
-        NavigationStack {
             if !isWelcomeScreenSeen {
                 WelcomeView(isWelcomeScreenSeen: $isWelcomeScreenSeen)
             } else {
-                HomeView()
+                TabView {
+                    NavigationStack {
+                        HomeView()
+                    }.tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                    
+                    NavigationStack {
+                        CartView()
+                    }.tabItem {
+                        Label("Cart", systemImage: "cart")
+                    }
+                }
             }
-        }
     }
 }
 

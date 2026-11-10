@@ -41,6 +41,8 @@ struct HomeView: View {
             
             Spacer()
         }
+        .navigationTitle("Home")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -31,4 +31,10 @@ class ShopManager: ObservableObject {
             userCart.append(shoe)
         }
     }
+    
+    func searchShoes(searchText: String) -> [ShoeModel] {
+        return ShopManager.shoesList.filter { shoe in
+            shoe.name.localizedCaseInsensitiveContains(searchText)
+        }
+    }
 }

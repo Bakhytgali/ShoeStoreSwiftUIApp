@@ -22,6 +22,12 @@ struct ContentView: View {
                     }
                     
                     NavigationStack {
+                        SearchView()
+                    }.tabItem {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+                    
+                    NavigationStack {
                         CartView()
                     }.tabItem {
                         Label("Cart", systemImage: "cart")
